@@ -5,11 +5,11 @@
     /// <summary>
     /// Debuffs which effect the opponent
     /// </summary>
-    public Debuff Debuff { get; private set; }
+    public Debuff Debuff { get; set; }
     /// <summary>
     /// Damage dealt to the opponent
     /// </summary>
-    public int DirectDamage { get; private set; }
+    public int DirectDamage { get; set; }
 
     /// <summary>
     /// Constructor to deal damage and apply a debuff
@@ -22,9 +22,12 @@
       this.DirectDamage = directDamage;
     }
 
-    public Damage(int directDamage)
+    public Damage(int directDamage) => this.DirectDamage = directDamage;
+
+    public Damage()
     {
-      this.DirectDamage = directDamage;
+      Debuff = new Debuff(0, 0, 0);
+      DirectDamage = 0;
     }
   }
 }

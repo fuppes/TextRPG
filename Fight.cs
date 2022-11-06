@@ -28,8 +28,19 @@ namespace OOP_Vererbung
       while(_player.Health > 0 && _enemy.Health > 0)
       {
         Console.Clear();
+        if(_player.Health <= 30)
+        {
+          Console.BackgroundColor = ConsoleColor.Red;
+        }
+        else
+        {
+          Console.BackgroundColor = ConsoleColor.Black;
+        }
+
         OpponentsAction opponentsAction = new OpponentsAction(PlayersTurn(), EnemyTurn());
         ProceedTurns(opponentsAction);
+        Helperclass.ChangeConsoleColor($@"{_enemy.Name} hat noch {_enemy.Health} Lebenspunkte.", ConsoleColor.Yellow);
+        Helperclass.ChangeConsoleColor($@"{_player.Name} hat noch {_player.Health} Lebenspunkte.", ConsoleColor.Blue);
         Helperclass.ChangeConsoleColor("Drücke Enter um fortzufahren.", ConsoleColor.Cyan);
         Console.ReadLine();
       }
@@ -72,12 +83,14 @@ namespace OOP_Vererbung
     /// </summary>
     public void ProceedTurns(OpponentsAction opponentsAction)
     {
-      Damage damageToEnemy;
-      Damage damageToPlayer;
+      Damage damageToEnemy = new Damage();
+      Damage damageToPlayer = new Damage();
 
       if(opponentsAction.PlayersAction == 1)
       {
         damageToEnemy = _player.CastFireball();
+        
+        if (damageToEnemy.Debuff == null){ damageToEnemy.Debuff = new(0, 0, 0); }
       }
       else
       {
@@ -87,11 +100,17 @@ namespace OOP_Vererbung
       if(opponentsAction.EnemysAction == 1)
       {
         damageToPlayer = _enemy.ThrowAxe();
+        if (damageToPlayer.Debuff == null) { damageToEnemy.Debuff = new(0, 0, 0); }
       }
-      else
+
+      if(opponentsAction.EnemysAction == 2)
       {
-        
+        damageToEnemy.DirectDamage = 0;
+        Helperclass.ChangeConsoleColor($@"{_enemy.Name} hat den direkten Schaden geblockt.", ConsoleColor.Yellow);
       }
+
+      _enemy.CalculateDamage(damageToEnemy);
+      _player.CalculateDamage(damageToPlayer);
     }
   }
 }

@@ -5,7 +5,7 @@
     /// <summary>
     /// Amount of stacks of the debuff
     /// </summary>
-    public int Stack { get; private set; }
+    public int Stack { get; set; }
     /// <summary>
     /// The damage of every single stack
     /// </summary>
@@ -17,7 +17,7 @@
 
     public Debuff(int stack, int damagePerStack, int stackLifeTime)
     {
-      SetStack(stack);
+      this.Stack = stack;
       this.DamagePerStack = damagePerStack;
       this.StackLifeTime = stackLifeTime;
     }

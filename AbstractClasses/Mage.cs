@@ -19,7 +19,7 @@ namespace OOP_Vererbung.AbstractClasses
 
       if(chanceToHitTarget == 0)
       {
-        int damage = random.Next(20);
+        int damage = random.Next(10, 30);
 
         Helperclass.ChangeConsoleColor($@"Dein Feuerball verursacht {damage} Schaden", ConsoleColor.Red);
 
@@ -32,8 +32,9 @@ namespace OOP_Vererbung.AbstractClasses
           Debuff debuff = new Debuff(1, 5, 1);
           return new Damage(debuff, damage);
         }
-
-        return new Damage(damage);
+        Debuff emptyDebuff = new Debuff(0, 0, 0);
+        
+        return new Damage(emptyDebuff, damage);
       }
 
       Console.WriteLine("Feuerball hat verfehlt!");

@@ -31,6 +31,7 @@ namespace OOP_Vererbung.AbstractClasses
           return new Damage(debuff, damage);
         }
 
+        Debuff emptyDebuff = new(0, 0, 0);
         return new Damage(damage);
       }
 
