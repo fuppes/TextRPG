@@ -1,0 +1,15 @@
+C:\Users\david\source\repos\OOP_Vererbung\bin\Debug\net6.0\OOP_Vererbung.exe
+C:\Users\david\source\repos\OOP_Vererbung\bin\Debug\net6.0\OOP_Vererbung.deps.json
+C:\Users\david\source\repos\OOP_Vererbung\bin\Debug\net6.0\OOP_Vererbung.runtimeconfig.json
+C:\Users\david\source\repos\OOP_Vererbung\bin\Debug\net6.0\OOP_Vererbung.dll
+C:\Users\david\source\repos\OOP_Vererbung\bin\Debug\net6.0\OOP_Vererbung.pdb
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.csproj.AssemblyReference.cache
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.AssemblyInfoInputs.cache
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.AssemblyInfo.cs
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.csproj.CoreCompileInputs.cache
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.dll
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\refint\OOP_Vererbung.dll
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.pdb
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\OOP_Vererbung.genruntimeconfig.cache
+C:\Users\david\source\repos\OOP_Vererbung\obj\Debug\net6.0\ref\OOP_Vererbung.dll
