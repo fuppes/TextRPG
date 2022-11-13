@@ -19,14 +19,14 @@ namespace OOP_Vererbung.AbstractClasses
       if (chanceToHitTarget == 0)
       {
         int damage = random.Next(10);
-        Console.WriteLine($@"The Axe dealt: {damage}");
+        Console.WriteLine($@"Die Axt richtete {damage} Schaden an.");
 
         int chanceForBleeding = random.Next(0, 100);
         chanceForBleeding = chanceForBleeding % 2;
 
         if (chanceForBleeding == 0)
         {
-          Console.WriteLine("The enemy is also bleeding!");
+          Console.WriteLine("Die Axt verursachte Blutungsschaden.");
           Debuff debuff = new Debuff(1, 4, 1);
           return new Damage(debuff, damage);
         }
@@ -35,7 +35,7 @@ namespace OOP_Vererbung.AbstractClasses
         return new Damage(damage);
       }
 
-      Console.WriteLine("Axe missed!");
+      Console.WriteLine("Axt hat verfehlt.");
       return new Damage(0);
     }
 
@@ -47,7 +47,7 @@ namespace OOP_Vererbung.AbstractClasses
     public static Damage BlockDamage(Damage damage)
     {
       Damage blockedDamage = new Damage(damage.DirectDamage * 0);
-      Console.WriteLine("You blocked the damage!");
+      Console.WriteLine("Direkter Schaden wurde geblockt.");
       return blockedDamage;
     }
   }

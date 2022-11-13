@@ -56,8 +56,9 @@ namespace OOP_Vererbung.AbstractClasses
       {
         result = 150 - player.Health; // Show correct difference when 150 would be exceeded
         player.Health = 150; 
-
       }
+
+      if(result < 0) { result = 0; }
 
       Helperclass.ChangeConsoleColor($@"Du heiltest dich um {result}!", ConsoleColor.Green);
       return result;
