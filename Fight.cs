@@ -81,10 +81,10 @@ namespace OOP_Vererbung
     /// </summary>
     public int? PlayersTurn()
     {
-      Console.WriteLine("Bitte wähle eine Aktion aus:\n1. Feuerball\n2. Selbstheilung");
+      Console.WriteLine("Bitte wähle eine Aktion aus:\n1. Feuerball\n2. MagicArmor\n3. SelfHeal");
       int? result = Convert.ToInt32(Console.ReadLine());
 
-      if(result == 1 || result == 2)
+      if(result == 1 || result == 2 || result == 3)
       {
         return result;
       }
@@ -122,10 +122,15 @@ namespace OOP_Vererbung
         
         if (damageToEnemy.Debuff == null){ damageToEnemy.Debuff = new(0, 0, 0); }
       }
+      else if(opponentsAction.PlayersAction == 2)
+            {
+                _player.MagicArmor(_player);
+            }
       else
       {
         _player.SelfHeal(_player);
       }
+      
 
       if(opponentsAction.EnemysAction == 1)
       {
