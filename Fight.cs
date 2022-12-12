@@ -2,9 +2,10 @@
 using OOP_Vererbung.Models;
 using OOP_Vererbung.Structs;
 
+
 namespace OOP_Vererbung
 {
-  internal class Fight
+    internal class Fight
   {
     private Player _player;
     private Enemy _enemy;
@@ -44,17 +45,46 @@ namespace OOP_Vererbung
         Helperclass.ChangeConsoleColor("Drücke Enter um fortzufahren.", ConsoleColor.Cyan);
         Console.ReadLine();
       }
+      if(_player.Health <= 0)
+      {
+                Console.WriteLine("Du bist gestorben!");
+                Console.WriteLine("Zum Fortfahren \"Enter\" drücken");
+                Console.WriteLine("Zum Beenden \"ESC\" drücken");
+
+                if (Console.ReadKey(true).Key == ConsoleKey.Enter) 
+                {
+                    Console.Clear();
+                    Program.Main();
+                }
+
+                else if (Console.ReadKey(true).Key == ConsoleKey.Escape)
+
+                {
+                    Console.Clear();
+                    Environment.Exit(0);
+                }
+
+                else if (Console.ReadKey(true).Key != ConsoleKey.Escape)
+                { 
+                    Helperclass.ChangeConsoleColor("You had one job...", ConsoleColor.Magenta); 
+                }
+                   
+
+
+
+      }
+
     }
 
     /// <summary>
     /// The choice the player is making
     /// </summary>
-    public int PlayersTurn()
+    public int? PlayersTurn()
     {
-      Console.WriteLine("Bitte wähle eine Aktion aus:\n1. Feuerball\n2. Selbstheilung");
-      int result = Convert.ToInt32(Console.ReadLine());
+      Console.WriteLine("Bitte wähle eine Aktion aus:\n1. Feuerball\n2. MagicArmor\n3. SelfHeal");
+      int? result = Convert.ToInt32(Console.ReadLine());
 
-      if(result == 1 || result == 2)
+      if(result == 1 || result == 2 || result == 3)
       {
         return result;
       }
@@ -92,10 +122,15 @@ namespace OOP_Vererbung
         
         if (damageToEnemy.Debuff == null){ damageToEnemy.Debuff = new(0, 0, 0); }
       }
+      else if(opponentsAction.PlayersAction == 2)
+            {
+                _player.MagicArmor(_player);
+            }
       else
       {
         _player.SelfHeal(_player);
       }
+      
 
       if(opponentsAction.EnemysAction == 1)
       {

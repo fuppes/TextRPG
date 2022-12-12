@@ -1,67 +1,87 @@
 ﻿using OOP_Vererbung.Attack;
 using OOP_Vererbung.Models;
 
+
 namespace OOP_Vererbung.AbstractClasses
 {
-  internal abstract class Mage
-  {
-    public const int HealthModificator = 3;
-
-    /// <summary>
-    /// Fireball deals damage to enemies
-    /// There is a chance to burn the enemy
-    /// </summary>
-    public Damage CastFireball()
+    internal abstract class Mage
     {
-      Random random = new Random();
+        public const int HealthModificator = 3;
 
-      int chanceToHitTarget = random.Next(100) % 2;
-
-      if(chanceToHitTarget == 0)
-      {
-        int damage = random.Next(10, 30);
-
-        Helperclass.ChangeConsoleColor($@"Dein Feuerball verursacht {damage} Schaden", ConsoleColor.Red);
-
-        int chanceForBurning = random.Next(0, 100);
-        chanceForBurning = chanceForBurning % 2;
-
-        if (chanceForBurning == 0)
+        /// <summary>
+        /// Fireball deals damage to enemies
+        /// There is a chance to burn the enemy
+        /// </summary>
+        public Damage CastFireball()
         {
-          Helperclass.ChangeConsoleColor("Dein Gegner brennt!", ConsoleColor.Red);
-          Debuff debuff = new Debuff(1, 5, 1);
-          return new Damage(debuff, damage);
+            Random random = new Random();
+
+            int chanceToHitTarget = random.Next(100) % 2;
+
+            if (chanceToHitTarget == 0)
+            {
+                int damage = random.Next(10, 30);
+
+                Helperclass.ChangeConsoleColor($@"Dein Feuerball verursacht {damage} Schaden", ConsoleColor.Red);
+
+                int chanceForBurning = random.Next(0, 100);
+                chanceForBurning = chanceForBurning % 2;
+
+                if (chanceForBurning == 0)
+                {
+                    Helperclass.ChangeConsoleColor("Dein Gegner brennt!", ConsoleColor.Red);
+                    Debuff debuff = new Debuff(1, 5, 1);
+                    return new Damage(debuff, damage);
+                }
+                Debuff emptyDebuff = new Debuff(0, 0, 0);
+
+                return new Damage(emptyDebuff, damage);
+            }
+
+            Console.WriteLine("Feuerball hat verfehlt!");
+            return new Damage(0);
         }
-        Debuff emptyDebuff = new Debuff(0, 0, 0);
-        
-        return new Damage(emptyDebuff, damage);
-      }
 
-      Console.WriteLine("Feuerball hat verfehlt!");
-      return new Damage(0);
+        /// <summary>
+        /// Heal yourself
+        /// </summary>
+        /// <returns>A random value between 0 and 15</returns>
+        public int SelfHeal(Player player)
+        {
+            Random random = new Random();
+            int result = random.Next(15);
+
+            player.Health += result;
+
+            if (player.Health > 150)
+            {
+                result = 150 - player.Health; // Show correct difference when 150 would be exceeded
+                player.Health = 150;
+            }
+
+            if (result < 0) { result = 0; }
+
+            Helperclass.ChangeConsoleColor($@"Du heiltest dich um {result}!", ConsoleColor.Green);
+            return result;
+        }
+
+        /// <summary>
+        /// Gain Shield
+        /// increase shield by 5
+        /// <summary>
+        /// <returns> Damage will decreased by 5 </returns>
+
+        public void MagicArmor(Player player)
+        {
+
+            player.MagicArmor += 5;
+            Helperclass.ChangeConsoleColor($@"MagicArmor steigt um 5. Du hast jetzt {player.MagicArmor}", ConsoleColor.Blue);
+        }
     }
-
-    /// <summary>
-    /// Heal yourself
-    /// </summary>
-    /// <returns>A random value between 0 and 15</returns>
-    public int SelfHeal(Player player)
-    {
-      Random random = new Random();
-      int result = random.Next(15);
-
-      player.Health += result;
-
-      if(player.Health > 150) 
-      {
-        result = 150 - player.Health; // Show correct difference when 150 would be exceeded
-        player.Health = 150; 
-      }
-
-      if(result < 0) { result = 0; }
-
-      Helperclass.ChangeConsoleColor($@"Du heiltest dich um {result}!", ConsoleColor.Green);
-      return result;
-    }
-  }
 }
+
+
+            
+
+
+       

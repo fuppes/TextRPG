@@ -14,11 +14,11 @@ namespace OOP_Vererbung.AbstractClasses
     {
       Random random = new Random();
 
-      int chanceToHitTarget = random.Next(100) % 7;
+      int chanceToHitTarget = random.Next(100) % 5;
 
       if (chanceToHitTarget == 0)
       {
-        int damage = random.Next(10);
+                int damage = random.Next(10);
         Console.WriteLine($@"Die Axt richtete {damage} Schaden an.");
 
         int chanceForBleeding = random.Next(0, 100);
